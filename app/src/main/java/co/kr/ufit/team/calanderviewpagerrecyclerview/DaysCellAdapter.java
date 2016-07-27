@@ -19,6 +19,7 @@ public class DaysCellAdapter extends RecyclerView.Adapter<DaysCellAdapter.ViewHo
         this.firstDay = firstDay;
     }
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemRoot = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_grid_cell, parent, false);
@@ -37,7 +38,7 @@ public class DaysCellAdapter extends RecyclerView.Adapter<DaysCellAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         int abc = 123;
 //        holder.day.setText("abc");
-        holder.day.setText(String.valueOf(abc++));
+        holder.day.setText(String.valueOf(++firstDay));
 
     }
 
@@ -48,4 +49,6 @@ public class DaysCellAdapter extends RecyclerView.Adapter<DaysCellAdapter.ViewHo
             day = (TextView)itemView.findViewById(R.id.textView);
         }
     }
+
+
 }
