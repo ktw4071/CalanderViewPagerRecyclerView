@@ -30,18 +30,15 @@ public class CalenderFragment extends Fragment {
     private RecyclerView mRecycler;
     private GridLayoutManager mGM;
     private int columnCount = 7;
-    private int firstDay;
     private DaysCellAdapter mAdapter;
 
+    //    private Calendar today = Calendar.getInstance(Locale.getDefault());
 
-
-    private Calendar today = Calendar.getInstance(Locale.getDefault());
-
-    public static CalenderFragment newInstance(String title, int page) {
+    public static CalenderFragment newInstance(int  month, int maximumDay) {
         CalenderFragment calenderFragment = new CalenderFragment();
         Bundle args = new Bundle();
-        args.putInt("SomeInt", page);
-        args.putString("SomeTitle", title);
+        args.putInt("ThisMonth", month);
+        args.putInt("ThisMaximumDay", maximumDay);
         calenderFragment.setArguments(args);
         return calenderFragment;
     }
@@ -59,7 +56,7 @@ public class CalenderFragment extends Fragment {
         mGM = new GridLayoutManager(super.getContext(), columnCount, 1, false);
         mRecycler.setLayoutManager(new GridLayoutManager(super.getContext(), columnCount, 1, false));
         mRecycler.addItemDecoration(new DividerItemDecoration(super.getContext(), 1));
-        mAdapter = new DaysCellAdapter(super.getContext(), firstDay);
+        mAdapter = new DaysCellAdapter(super.getContext(), super.getArguments().getInt("ThisMaximumDay"));
         mRecycler.setAdapter(mAdapter);
 
         final GestureDetector mGestureDetector = new GestureDetector(super.getContext(), new GestureDetector.SimpleOnGestureListener(){

@@ -11,12 +11,13 @@ import android.widget.TextView;
  * Created by ccei on 2016-07-25.
  */
 public class DaysCellAdapter extends RecyclerView.Adapter<DaysCellAdapter.ViewHolder>{
-    int firstDay;
+    int maximumDay;
+    int startDay = 1;
     Context mContext;
 
-    public DaysCellAdapter(Context mContext, int firstDay){
+    public DaysCellAdapter(Context mContext, int maximumDay){
         this.mContext = mContext;
-        this.firstDay = firstDay;
+        this.maximumDay = maximumDay;
     }
 
 
@@ -31,14 +32,14 @@ public class DaysCellAdapter extends RecyclerView.Adapter<DaysCellAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 31;
+        return maximumDay;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         int abc = 123;
 //        holder.day.setText("abc");
-        holder.day.setText(String.valueOf(++firstDay));
+        holder.day.setText(String.valueOf(startDay++));
 
     }
 
